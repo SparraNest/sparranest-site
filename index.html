@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SparraNest · Spot the hidden value in any home</title>
+<meta name="description" content="Free Hidden Value Home Audit and the Hidden Value System, from Sarah: a mum of four who has renovated and sold four homes. Spot the hidden value. Renovate the right way. Build wealth.">
+<meta property="og:title" content="SparraNest · Spot the hidden value in any home">
+<meta property="og:description" content="Score any home for hidden renovation value in 10 minutes. Free.">
+<meta name="theme-color" content="#5C6B4E">
+<link rel="icon" href="assets/sparranest-logo.png">
+<meta property="og:image" content="https://sparranest.com/assets/sarah.jpg">
+<link rel="stylesheet" href="https://hiddenvalue.netlify.app/fonts/fonts.css">
+<style>
+:root{
+  --bg:#FAF8F2;--surface:#FFFFFF;--sunk:#EFEDE4;--line:#DDDACE;
+  --fg:#2F322D;--muted:#6B6E66;--sage:#5C6B4E;--sage-soft:#7C8F6E;--sage-tint:#E8ECE2;
+  --gold:#C49A3E;--charcoal:#2F322D;--on-dark:#F3EFE6;
+  --display:"Lora",Georgia,"Times New Roman",serif;
+  --body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--body)}
+img{max-width:100%}
+a{color:var(--sage)}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);font-weight:600}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--sage);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 24px;border-radius:999px;border:2px solid var(--sage);transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px);background:#4E5C42}
+.btn.ghost{background:transparent;color:var(--sage)}
+.btn.ghost:hover{background:var(--sage-tint)}
+.btn.light{background:var(--on-dark);color:var(--charcoal);border-color:var(--on-dark)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:rgba(250,248,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.brand img{width:38px;height:38px;border-radius:9px}
+.brand b{font-family:var(--display);font-size:21px;font-weight:600}
+.nav nav{display:flex;align-items:center;gap:22px}
+.nav nav a{text-decoration:none;color:var(--fg);font-size:14px;font-weight:500}
+.nav nav a.btn{color:#fff;padding:10px 18px;font-size:14px}
+@media (max-width:760px){.nav nav a:not(.btn){display:none}}
+
+/* hero */
+.hero{padding:72px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(36px,5.4vw,58px);margin:14px 0 18px}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero .lead{font-size:18px;color:var(--muted);max-width:52ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.small{font-size:13px;color:var(--muted);margin-top:14px}
+.scorecard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 20px 50px -30px rgba(47,50,45,.35)}
+.scorecard .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.scorecard .home{font-family:var(--display);font-size:20px}
+.scorecard .score{background:var(--sage);color:#fff;border-radius:14px;padding:8px 14px;text-align:center;line-height:1.1}
+.scorecard .score b{font-family:var(--display);font-size:26px;display:block}
+.scorecard .score span{font-size:11px;opacity:.85}
+.bar{margin:12px 0}
+.bar div{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.bar i{display:block;height:8px;border-radius:99px;background:var(--sunk);overflow:hidden}
+.bar i::after{content:"";display:block;height:100%;width:var(--w);background:var(--sage-soft);border-radius:99px}
+.verdict{gap:12px;margin-top:18px;background:var(--charcoal);color:var(--on-dark);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.verdict b{font-family:var(--display);font-size:18px;color:#fff;letter-spacing:.02em}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero{padding:44px 0}}
+
+/* sections */
+section{padding:72px 0}
+.head{max-width:640px;margin-bottom:36px}
+.head h2{font-size:clamp(28px,3.6vw,40px);margin-top:10px}
+.head p{margin-top:12px;color:var(--muted);font-size:17px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--sage-tint);color:var(--sage);font-family:var(--display);font-weight:600;font-size:18px;margin-bottom:16px}
+.step h3{font-size:21px;margin-bottom:8px}
+.step p{color:var(--muted);font-size:15px}
+.step .tag{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:var(--sage);background:var(--sage-tint);padding:4px 10px;border-radius:99px}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+
+.system{background:var(--charcoal);color:var(--on-dark);border-radius:28px;padding:48px}
+.system .eyebrow{color:#B9C7A9}
+.system h2{color:#fff;font-size:clamp(28px,3.6vw,40px);margin:10px 0 12px}
+.system .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:start}
+.ticks{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.ticks li{padding-left:28px;position:relative;font-size:15px}
+.ticks li::before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--sage-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.price{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:26px}
+.price .when{font-size:13px;color:#B9C7A9;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.price .amt{font-family:var(--display);font-size:46px;color:#fff;margin:6px 0 2px}
+.price .amt s{font-size:22px;opacity:.55;margin-left:8px}
+.price p{font-size:14px;opacity:.85}
+.price .btn{width:100%;margin-top:20px}
+@media (max-width:860px){.system{padding:30px 22px}.system .grid{grid-template-columns:1fr}}
+
+.about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.portrait{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;border-radius:24px;box-shadow:0 24px 50px -30px rgba(47,50,45,.45)}
+.about h2{font-size:clamp(28px,3.6vw,40px);margin:10px 0 16px}
+.about p+p{margin-top:14px}
+.about .sig{font-family:var(--display);font-style:italic;font-size:22px;color:var(--sage);margin-top:20px}
+@media (max-width:860px){.about .wrap{grid-template-columns:1fr}.portrait{max-width:300px}}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px}
+.card h3{font-size:24px;margin:8px 0 10px}
+.card p{color:var(--muted);font-size:15px}
+.card .btn{margin-top:20px}
+.card.sage{background:var(--sage-tint);border-color:#D3DACB}
+@media (max-width:860px){.cards{grid-template-columns:1fr}}
+
+.faq details{max-width:760px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font-family:var(--display);font-size:22px;color:var(--sage);line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--muted);font-size:15px}
+
+.final{text-align:center;padding:80px 0}
+.final h2{font-size:clamp(30px,4vw,44px);max-width:20ch;margin:10px auto 14px}
+.final p{color:var(--muted);max-width:52ch;margin:0 auto}
+.final .ctas{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:36px 0 44px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer a{color:var(--muted)}
+footer .links{display:flex;flex-wrap:wrap;gap:18px}
+footer .disc{flex-basis:100%;font-size:12px;line-height:1.6;margin-top:6px}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top" aria-label="SparraNest home">
+    <img src="assets/sparranest-logo.png" alt="" width="38" height="38">
+    <b>SparraNest</b>
+  </a>
+  <nav>
+    <a href="#how">How it works</a>
+    <a href="#system">The System</a>
+    <a href="#realtors">For realtors</a>
+    <a class="btn" href="https://stan.store/SparraNest/p/hidden-value-home-audit--free">Free audit</a>
+  </nav>
+</div></header>
+
+<main id="top">
+  <section class="hero"><div class="wrap">
+    <div>
+      <p class="eyebrow">Hidden Value Homes</p>
+      <h1>See the home it <em>could</em> be, before you buy it.</h1>
+      <p class="lead">The house that needs work is often the best deal on the street, and it's the one most buyers walk straight past. My free Hidden Value Home Audit shows you where the upside is in about 10 minutes, right from your phone.</p>
+      <div class="ctas">
+        <a class="btn" href="https://stan.store/SparraNest/p/hidden-value-home-audit--free">Get the free audit</a>
+        <a class="btn ghost" href="#how">How it works</a>
+      </div>
+      <p class="small">Free. No spreadsheets. Everything you enter stays on your phone.</p>
+    </div>
+    <div class="scorecard" aria-label="Example audit result">
+      <div class="top">
+        <div><p class="eyebrow">Example audit</p><p class="home">14 Maple Lane</p></div>
+        <div class="score"><b>73</b><span>/ 100</span></div>
+      </div>
+      <div class="bar"><div><span>Structure</span><span class="muted">20/25</span></div><i style="--w:80%"></i></div>
+      <div class="bar"><div><span>Layout &amp; flow</span><span class="muted">15/20</span></div><i style="--w:75%"></i></div>
+      <div class="bar"><div><span>Light &amp; outlook</span><span class="muted">12/15</span></div><i style="--w:80%"></i></div>
+      <div class="bar"><div><span>Kitchen &amp; baths</span><span class="muted">9/15</span></div><i style="--w:60%"></i></div>
+      <div class="verdict"><span>Hidden Value System verdict</span><b>BUY &amp; RENOVATE</b></div>
+    </div>
+  </div></section>
+
+  <section id="how"><div class="wrap">
+    <div class="head">
+      <p class="eyebrow">How it works</p>
+      <h2>From "it needs a lot of work" to a clear yes or no.</h2>
+      <p>Three steps, all on your phone. Use it while you're standing in the house.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Spot the potential</h3>
+        <p>Walk through the home and score it across seven areas, from structure and layout to light, kitchens and red flags. You get a score out of 100 and see exactly where the hidden value sits.</p>
+        <span class="tag">Free audit</span>
+      </div>
+      <div class="step">
+        <h3>Run the numbers</h3>
+        <p>Cost the renovation room by room, estimate the after-repair value, and see your 2, 5 and 7-year equity and return.</p>
+        <span class="tag">Hidden Value System</span>
+      </div>
+      <div class="step">
+        <h3>Decide with confidence</h3>
+        <p>Get a clear verdict (buy and renovate, renovate with caution, or walk away) plus an action plan for your top priorities.</p>
+        <span class="tag">Hidden Value System</span>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="system" style="padding-top:0"><div class="wrap">
+    <div class="system"><div class="grid">
+      <div>
+        <img src="assets/hvh-logo.png" alt="Hidden Value Homes" width="64" height="64" style="border-radius:14px;margin-bottom:16px;display:block">
+        <p class="eyebrow">The Hidden Value System</p>
+        <h2>Know the numbers before you fall in love.</h2>
+        <p style="opacity:.85">Your audit shows where the upside is. The System tells you what it's worth, what it'll cost, and whether to buy, renovate or walk away.</p>
+        <ul class="ticks">
+          <li>Renovation budget with contingency, closing and holding costs</li>
+          <li>After-repair value from two methods, blended</li>
+          <li>2, 5 and 7-year value, equity and profit</li>
+          <li>ROI ranked room by room, so you know where to spend first</li>
+          <li>A clear verdict and your final action plan</li>
+          <li>My four real flips loaded in as worked examples</li>
+          <li>Unlimited homes, saved on your phone</li>
+        </ul>
+      </div>
+      <div class="price">
+        <p class="when">Opens December 28</p>
+        <p class="amt">$97 <s>$127</s></p>
+        <p>Founding price for the first week only, then $127. One payment, for every home you ever view.</p>
+        <a class="btn light" href="https://stan.store/SparraNest/p/hidden-value-home-audit--free">Join the waitlist</a>
+        <p style="margin-top:12px;font-size:13px;opacity:.7">Get the free audit and you're automatically on the list.</p>
+      </div>
+    </div></div>
+  </div></section>
+
+  <section class="about"><div class="wrap">
+    <img class="portrait" src="assets/sarah.jpg" alt="Sarah, founder of SparraNest" width="800" height="1000" loading="lazy">
+    <div>
+      <p class="eyebrow">Hi, I'm Sarah</p>
+      <h2>A tired but relentless mum of four, quietly building wealth one house at a time.</h2>
+      <p>I'm British, living in the US, and I've renovated and sold four homes. Every one of them was a house other buyers didn't want: dated, awkward, a bit sad. And every one had value hiding in plain sight.</p>
+      <p>I learned to find it the hard way, with spreadsheets at midnight and a few near-misses. The Hidden Value Home Audit and System are that process, made simple enough to use on your phone in the middle of a viewing.</p>
+      <p>SparraNest comes from "sparra", cockney for sparrow: small, scrappy, and very good at building a nest.</p>
+      <p class="sig"><img src="assets/btv-icon.png" alt="" width="40" height="40" style="vertical-align:middle;margin-right:6px">Buy The Vision.</p>
+    </div>
+  </div></section>
+
+  <section id="realtors"><div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Two ways in</p>
+      <h2>For home buyers, and the agents who help them.</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <p class="eyebrow">Buyers &amp; homeowners</p>
+        <h3>Start with the free audit</h3>
+        <p>Score any home in about 10 minutes and see where the hidden value is. Planning a renovation on the home you already own? It works for that too.</p>
+        <a class="btn" href="https://stan.store/SparraNest/p/hidden-value-home-audit--free">Get the free audit</a>
+      </div>
+      <div class="card sage">
+        <p class="eyebrow">Realtors</p>
+        <h3>Give your clients an edge</h3>
+        <p>Gift the full Hidden Value System to buyers looking at homes that need work, or as a closing gift. Your name and photo appear inside their app. From $69 per client.</p>
+        <a class="btn" href="https://hiddenvalue.netlify.app/agents.html">See the partner program</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap faq">
+    <div class="head"><p class="eyebrow">Questions</p><h2>Good to know</h2></div>
+    <details><summary>Is the audit really free?</summary><p>Yes. Sign up with your name and email and you'll get the app straight away. You'll also be first to hear when the Hidden Value System opens.</p></details>
+    <details><summary>Do I need Excel or any experience?</summary><p>No. Everything runs in the app on your phone, with plain-English explanations of terms like ARV and ROI. An Excel version is included with the System for anyone who prefers a laptop.</p></details>
+    <details><summary>Who can see the homes I save?</summary><p>No one but you. Your homes, scores, notes and photos are saved only on your own phone. They're never sent to me or to your agent. <a href="https://hiddenvalue.netlify.app/privacy.html">Read the privacy page</a>.</p></details>
+    <details><summary>I got a code from my agent. What do I do?</summary><p>Tap the link your agent sent you, add your email, and the System unlocks. You can also open <a href="https://hiddenvalue.netlify.app">the app</a> and enter your code under System.</p></details>
+    <details><summary>Is this financial advice?</summary><p>No. The audit and System are educational tools to help you think clearly. Always confirm numbers with your inspector, contractor, lender and agent before you buy.</p></details>
+  </div></section>
+
+  <section class="final"><div class="wrap">
+    <p class="eyebrow">Your next viewing</p>
+    <h2>Walk in seeing what everyone else misses.</h2>
+    <p>Get the free audit now and you'll be on the list for the System's founding price on December 28.</p>
+    <div class="ctas"><a class="btn" href="https://stan.store/SparraNest/p/hidden-value-home-audit--free">Get the free audit</a></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><b style="color:var(--fg);font-family:var(--display);font-size:18px">SparraNest</b><br>Spot the hidden value. Renovate the right way. Build wealth.</div>
+  <div class="links">
+    <a href="https://www.instagram.com/sparranest/">Instagram</a>
+    <a href="mailto:hello@sparranest.com">hello@sparranest.com</a>
+    <a href="https://hiddenvalue.netlify.app/privacy.html">Privacy</a>
+    <a href="https://hiddenvalue.netlify.app/terms.html">Terms</a>
+  </div>
+  <p class="disc">Hidden Value Homes™ is operated by SparraNest. Educational tools only, not financial, legal, tax or investment advice. Any results shared are my own past results; they aren't typical and aren't a guarantee of yours.</p>
+</div></footer>
+
+</body>
+</html>
